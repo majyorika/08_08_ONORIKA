@@ -5,7 +5,7 @@ include('functions.php');
 $pdo=db_conn();
 
 //2. データ表示SQL作成
-$sql = 'SELECT * FROM gs_bm_table';
+$sql = 'SELECT * FROM user_table';
 $stmt = $pdo->prepare($sql);
 $status = $stmt->execute();
 
@@ -22,7 +22,7 @@ if ($status==false) {
         $view .= '<li class="list-group-item">';
         $view .= '<a href="detail.php?id='.$result['id'].'" class="badge badge-primary">Edit</a>';
         $view .= '<a href="delete.php?id='.$result['id'].'" class="badge badge-danger">Delete</a>';
-        $view .= '<p><b>'.$result['name'].'</b><br><a href="'.$result['url'].'" target="_blank">'.$result['url'].'</a>';
+        $view .= '<p><b>'.$result['name'].'</b><br><a href="'.$result['lid'].'" target="_blank">'.$result['lid'].'</a>';
         $view .= '<p>'.$result['comment'].'<br>'.$result['indate'].'</p>';
         $view .= '</li>';
     }

@@ -1,4 +1,5 @@
 <?php
+include('functions.php');
 
 // 入力チェック
 if(
@@ -17,15 +18,17 @@ $comment=$_POST['comment'];
 
 
 //DB接続
-$dbn = 'mysql:dbname=gs_f02_db08;charset=utf8;port=3306;host=localhost';
-$user = 'root';
-$pwd = 'root';
+$pdo=db_conn();
 
-try {
-    $pdo = new PDO($dbn, $user, $pwd);
-} catch (PDOException $e) {
-    exit('dbError:'.$e->getMessage());
-}
+// $dbn = 'mysql:dbname=gs_f02_db08;charset=utf8;port=3306;host=localhost';
+// $user = 'root';
+// $pwd = 'root';
+
+// try {
+//     $pdo = new PDO($dbn, $user, $pwd);
+// } catch (PDOException $e) {
+//     exit('dbError:'.$e->getMessage());
+// }
 
 //データ登録SQL作成
 $sql ='INSERT INTO gs_bm_table(id,name,url,comment,indate)VALUES(NULL,:a1,:a2,:a3,sysdate())';
